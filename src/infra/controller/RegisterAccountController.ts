@@ -1,3 +1,5 @@
+import status from 'http-status'
+
 import type { RegisterAccountUseCase } from '@/application/usecases'
 
 import type { HttpServer } from '../http/HttpServer'
@@ -7,9 +9,13 @@ export class RegisterAccountController {
     readonly httpServer: HttpServer,
     readonly useCase: RegisterAccountUseCase,
   ) {
-    httpServer.register('post', '/accounts', async (params: any, body: any) => {
-      const output = await this.useCase.execute(body)
-      return output
-    })
+    httpServer.register(
+      'post',
+      '/accounts',
+      async (params: any, body: any) => {
+        return this.useCase.execute(body)
+      },
+      status.CREATED,
+    )
   }
 }

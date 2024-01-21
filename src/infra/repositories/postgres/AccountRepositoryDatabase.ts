@@ -1,5 +1,5 @@
 import type { AccountRepository } from '@/application/repository/AccountRepository'
-import type { Account } from '@/domain/entities'
+import { Account } from '@/domain/entities'
 import { PrismaAdapter } from '@/infra/database/adapters'
 
 export class AccountRepositoryDatabase implements AccountRepository {
@@ -14,13 +14,16 @@ export class AccountRepositoryDatabase implements AccountRepository {
       data: {
         account_id: account.accountId,
         name: account.name,
+        cpf: account.cpf.getValue(),
         birth_date: account.birthDate,
       },
     })
   }
 
-  findByCpf(cpf: string): Promise<Account> {
-    throw new Error('Method not implemented.')
+  async findByCpf(cpf: string): Promise<Account> {
+    const accountData = await this.orm.prisma.account.findUnique({ where: { cpf } })
+    if (!accountData) return undefined
+    return Account.restore(accountData.account_id, accountData.name, accountData.cpf, accountData.birth_date)
   }
 
   list(params?: Pagination): Promise<Account[]> {

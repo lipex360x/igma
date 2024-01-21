@@ -13,6 +13,7 @@ datasource db {
 model Account {
   account_id    String   @id
   name          String
+  cpf           String   @unique
   birth_date    DateTime
   created_at    DateTime @default(now())
 
