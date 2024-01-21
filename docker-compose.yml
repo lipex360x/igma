@@ -12,11 +12,11 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DB}
-      PGDATA: /data/postgres
-    volumes:
-      - db:/var/lib/postgresql/data
-      - ./src/infra/database/migration/db.sql:/docker-entrypoint-initdb.d/migrate.sql
+#       PGDATA: /data/postgres
+#     volumes:
+#       - db:/var/lib/postgresql/data
+#       - ./src/infra/database/migration/db.sql:/docker-entrypoint-initdb.d/migrate.sql
 
-volumes:
-  db:
-    driver: local
+# volumes:
+#   db:
+#     driver: local
