@@ -16,7 +16,6 @@ describe('RegisterAccountUseCase', () => {
   it('should register a account', async () => {
     const inputAccount = {
       name: 'johh Doe',
-      email: 'johh@example.com',
       cpf: '41553189035',
       birthDate: '2000-01-01',
     }

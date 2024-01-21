@@ -15,4 +15,17 @@ export class AccountRepositoryInMemory implements AccountRepository {
   async findByCpf(cpf: string): Promise<Account> {
     return this.accounts.find((account) => account.cpf.getValue() === cpf)
   }
+
+  async list(params?: Pagination): Promise<Account[]> {
+    return this.arrayPagination(this.accounts, params)
+  }
+
+  private arrayPagination(array: Account[], params: Pagination) {
+    return array.slice((params.page - 1) * params.perPage, params.page * params.perPage)
+  }
+}
+
+type Pagination = {
+  page: number
+  perPage: number
 }
