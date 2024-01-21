@@ -7,17 +7,19 @@ Content-Type: application/json
 {
   "name": "johh Doe",
   "email": "johh@example.com",
-  "cpf": "41553189035",
+  "cpf": "62516387024",
   "birthDate": "2000-01-01"
 }
+
+###
+
+# @name retrieve_acount
+GET {{baseUrl}}/accounts/41553189035
 
 ###
 
 # @name list_acounts
 GET {{baseUrl}}/accounts
 
-###
 
-# @name retrieve_acount
-GET {{baseUrl}}/accounts/1234
 

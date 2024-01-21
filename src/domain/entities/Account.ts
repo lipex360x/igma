@@ -14,4 +14,8 @@ export class Account {
     const accountId = crypto.randomUUID()
     return new Account(accountId, name, new Cpf(cpf), new Date(birthDate))
   }
+
+  static restore(accountId: string, name: string, cpf: string, birthDate: Date) {
+    return new Account(accountId, name, new Cpf(cpf), new Date(birthDate))
+  }
 }
