@@ -7,7 +7,7 @@ Content-Type: application/json
 {
   "name": "johh Doe",
   "email": "johh@example.com",
-  "cpf": "123456",
+  "cpf": "41553189035",
   "birthDate": "2000-01-01"
 }
 
