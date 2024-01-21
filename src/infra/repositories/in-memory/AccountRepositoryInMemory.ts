@@ -11,4 +11,8 @@ export class AccountRepositoryInMemory implements AccountRepository {
   async save(account: Account): Promise<void> {
     this.accounts.push(account)
   }
+
+  async findByCpf(cpf: string): Promise<Account> {
+    return this.accounts.find((account) => account.cpf.getValue() === cpf)
+  }
 }
