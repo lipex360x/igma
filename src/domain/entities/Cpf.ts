@@ -6,7 +6,7 @@ export class Cpf {
     this.cpf = this.removeMask(value)
   }
 
-  public getCpf() {
+  public getValue() {
     return this.cpf
   }
 

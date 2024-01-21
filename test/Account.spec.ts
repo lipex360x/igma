@@ -9,6 +9,6 @@ describe('Account', () => {
     }
     const output = Account.create(input.name, input.cpf, input.birthDate)
     expect(output.accountId).toBeDefined()
-    expect(output.cpf.value).toBe('97456321558')
+    expect(output.cpf.getValue()).toBe('97456321558')
   })
 })

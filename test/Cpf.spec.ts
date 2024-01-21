@@ -6,7 +6,7 @@ describe('Cpf', () => {
       cpf: '41553189035',
     }
     const output = new Cpf(input.cpf)
-    expect(output.getCpf()).toBe('41553189035')
+    expect(output.getValue()).toBe('41553189035')
   })
 
   it('should create a cpf with mask', () => {
@@ -14,7 +14,7 @@ describe('Cpf', () => {
       cpf: '415.531.890-35',
     }
     const output = new Cpf(input.cpf)
-    expect(output.getCpf()).toBe('41553189035')
+    expect(output.getValue()).toBe('41553189035')
   })
 
   it('should return an error if cpf is empty', () => {
