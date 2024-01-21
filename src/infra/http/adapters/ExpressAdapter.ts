@@ -1,7 +1,7 @@
 import type { Express, Request, Response } from 'express'
 import express from 'express'
 
-import type { HttpServer } from './HttpServer'
+import type { HttpServer } from '../HttpServer'
 
 export class ExpressAdapter implements HttpServer {
   private app: Express
