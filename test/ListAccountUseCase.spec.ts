@@ -49,7 +49,7 @@ describe('RegisterAccountUseCase', () => {
       perPage: 3,
     }
     const outputRetrieveAccountPaginated = await listAccounts.execute(inputPaginated)
-    expect(outputRetrieveAccountPaginated.length).toBe(3)
-    expect(outputRetrieveAccountPaginated[1].cpf).toBe('16249898026')
+    expect(outputRetrieveAccountPaginated.data.length).toBe(3)
+    expect(outputRetrieveAccountPaginated.data[1].cpf).toBe('16249898026')
   })
 })

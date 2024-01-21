@@ -15,7 +15,7 @@ export class ExpressAdapter implements HttpServer {
   register(method: string, url: string, callback: Function, statusCode = status.CREATED): void {
     this.app[method](url, async function (request: Request, response: Response) {
       try {
-        const output = await callback(request.params, request.body)
+        const output = await callback(request, request.body)
         response.status(statusCode).json(output)
       } catch (error) {
         response.status(status.UNPROCESSABLE_ENTITY).json({

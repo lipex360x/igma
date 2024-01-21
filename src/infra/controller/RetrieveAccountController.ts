@@ -7,9 +7,8 @@ export class RetrieveAccountController {
     readonly httpServer: HttpServer,
     readonly useCase: RetrieveAccountUseCase,
   ) {
-    httpServer.register('get', '/accounts/:cpf', async (params: any, body: any) => {
-      const output = await this.useCase.execute(params)
-      return output
+    httpServer.register('get', '/accounts/:cpf', async ({ params }: any, body: any) => {
+      return this.useCase.execute(params)
     })
   }
 }

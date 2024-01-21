@@ -1,22 +1,24 @@
 import type { AccountRepository } from '../repository/AccountRepository'
 
 export class ListAccountsUseCase {
+  private DEFAULT_PAGE = 1
+  private DEFAULT_PER_PAGE = 10
+
   constructor(readonly accountRepository: AccountRepository) {}
 
-  async execute(params: Input): Promise<Output[]> {
-    const defaultPage = 1
-    const defaultPerPage = 10
+  async execute(params: Input): Promise<Output> {
     const pagination = {
-      page: params.page || defaultPage,
-      perPage: params.perPage || defaultPerPage,
+      page: +params.page || this.DEFAULT_PAGE,
+      perPage: +params.perPage || this.DEFAULT_PER_PAGE,
     }
     const accounts = await this.accountRepository.list(pagination)
-    return accounts.map((account) => ({
+    const data = accounts.map((account) => ({
       accountId: account.accountId,
       name: account.name,
       cpf: account.cpf.getValue(),
       birthDate: account.birthDate,
     }))
+    return { data, ...pagination }
   }
 }
 
@@ -26,8 +28,12 @@ type Input = {
 }
 
 type Output = {
-  accountId: string
-  name: string
-  cpf: string
-  birthDate: Date
+  data: {
+    accountId: string
+    name: string
+    cpf: string
+    birthDate: Date
+  }[]
+  page: number
+  perPage: number
 }

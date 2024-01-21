@@ -26,8 +26,17 @@ export class AccountRepositoryDatabase implements AccountRepository {
     return Account.restore(accountData.account_id, accountData.name, accountData.cpf, accountData.birth_date)
   }
 
-  list(params?: Pagination): Promise<Account[]> {
-    throw new Error('Method not implemented.')
+  async list(params?: Pagination): Promise<Account[]> {
+    const accountData = await this.orm.prisma.account.findMany({
+      skip: (params.page - 1) * params.perPage,
+      take: params.page * params.perPage,
+      orderBy: { created_at: 'desc' },
+    })
+    const accounts: Account[] = []
+    for (const account of accountData) {
+      accounts.push(Account.restore(account.account_id, account.name, account.cpf, account.birth_date))
+    }
+    return accounts
   }
 }
 
