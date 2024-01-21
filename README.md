@@ -1,47 +1,130 @@
-#Desafio técnico Escrever uma API de cadastro de clientes (Nome, CPF, nascimento)
+<h2 align="center">Desafio Técnico Igma</h2>
+<p align="center">Backend</p>
 
-Importante:
+---
 
-Validar o CPF antes de gravar o cliente no banco de dados
+#### :bookmark_tabs: Índice
 
-##Informações técnicas
+- [Desafio Técnico](#zap-desafio-técnico)
 
-Endpoints
-[ ] Endpoint para criar clientes (esse endpoint deve retornar um 422 caso o cpf seja inválido)
-[ ] Endpoint para buscar cliente por CPF
-[ ] Endpoint para listar todos os clientes (usando paginação)
+- [Pré Requisitos de Execução (Servidor)](#zap-startup)
 
-Regras para validação do CPF
-O CPF pode ser passado em dois formatos:
+- [Iniciando a API](#zap-iniciando-a-api)
 
-999.999.999-00 (com máscara)
+- [Endpoints](#zap-endpoints)
 
-99999999900 (somente números)
+- [Tecnologias Utilizadas](#zap-tecnologias-utilizadas)
 
-Para validação da numeração do CPF pode utilizar as regras do seguinte link:
+- [Live Preview](https://glass-blue-login.netlify.app/)
 
-https://www.macoratti.net/alg_cpf.htm#:~:text=O algoritmo de validação do,%3A 111.444.777-05
+---
 
-## Requisitos
+#### :zap: Desafio técnico
 
-Escrever o algoritmo de validação do CPF manualmente (NÃO usar libs prontas para isso)
+Escrever uma API de cadastro de clientes 
 
-Escrever seu proprio código de validação de CPF (Não copiar de outro código fonte)
+#### Informações técnicas
 
-Nos envie um repositório no github com seu código fonte
+##### Endpoints
 
-Utilize uma linguagem que possibilite o uso de orientação a objetos como Java, C#, Python, Javascript, etc
+* Endpoint para criar clientes (esse endpoint deve retornar um 422 caso o cpf seja inválido)
 
-Escolha o banco de dados de sua preferência
+* Endpoint para buscar cliente por CPF
 
-## Recomendações
+* Endpoint para listar todos os clientes (usando paginação)
 
-Lembre-se de utilizar boas práticas como: testes, orientação a objetos, design patterns, logs, documentação, etc.
+##### Regras para validação do CPF
 
-É importante ser bem simples rodar sua aplicação em qualquer servidor (independente do sistema operacional ou outros softwres instalados).
+* O CPF pode ser passado em dois formatos:
 
-Escreva um
+* 999.999.999-00 (com máscara)
 
-Readme.md
+* 99999999900 (somente números)
 
-(explique como subir sua aplicação, tecnologias utilizadas, e como rodar os testes)
+* Algorítmo de validação: [Macoratti](https://www.macoratti.net/alg_cpf.htm#:~:text=O)
+
+
+##### Requisitos
+
+* Escrever o próprio algoritmo de validação do CPF (não usar bibliotecas externas)
+
+* Utilize uma linguagem que possibilite o uso de orientação a objetos como Java, C#, Python, Javascript, etc
+
+* Escolha o banco de dados de sua preferência
+
+---
+
+#### :zap: Pré Requisitos de Execução (Servidor)
+
+* GIT
+
+* Node.JS
+
+* Docker
+
+---
+
+#### :zap: Iniciando a API
+
+* Faça um clone do diretório para o servidor de execução com o comando `git clone https://github.com/lipex360x/igma.git`
+
+* Execute a instalaçao das dependências com o comando `npm install`
+
+* Faça uma cópia do arquivo **.env.example** renomeando para **.env** ou configure as seguintes variáveis diretamente no ambiente seguindo o arquivo de exemplo:
+  * API_PORT
+  * POSTGRES_DB
+  * POSTGRES_USER
+  * POSTGRES_PASSWORD
+  * DATABASE_URL
+
+---
+
+#### :zap: Endpoints
+
+###### cadastrar cliente
+```md
+[POST] /accounts
+```
+
+* payload
+
+```ts
+  name: string
+  cpf: string
+  birthDate: Date
+```
+
+
+
+###### exibir cliente
+
+```md
+[GET] /accounts/:cpf
+```
+
+
+
+###### listar clientes
+
+```md
+[GET] /accounts
+```
+
+* query params
+
+```ts
+  page?: number 
+  perPage?: number 
+```
+
+---
+
+#### :zap: Tecnologias Utilizadas
+
+```
+  Node.JS
+  Express
+  Typescript
+  Prisma ORM
+  Swagger
+```
