@@ -1,0 +1,155 @@
+{
+  "swagger": "2.0",
+  "info": {
+      "version": "1.0.0",
+      "title": "Igma API"
+  },
+
+  "produces": [
+    "application/json"
+  ],
+
+  "paths": {
+    "/accounts": {
+      "get": {
+        "tags": ["Account"],
+        "summary": "Get all accounts",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "description": "Account Page",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "perPage",
+            "required": false,
+            "description": "Accounts per Page",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+          "description": "OK",
+            "schema": {
+                "$ref": "#/definitions/Account"
+            }
+          }
+        }
+      },
+
+      "post": {
+        "tags": ["Account"],
+        "summary": "Create a new account",
+        "requestBody": {
+          "description": "Account Object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/Account"
+              },
+              "examples": {
+                "name": {
+                  "value": "john doe"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "description": "Account with new values of properties",
+            "schema": {
+              "$ref": "#/definitions/Account"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/id"}
+          },
+          "422": {
+            "description": "Failed. Invalid CPF."
+          }
+        }
+      }
+    },
+
+    "/accounts/{cpf}": {
+      "get": {
+        "tags": ["Account"],
+        "summary": "Retrieve Account with given CPF",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "cpf",
+            "required": false,
+            "description": "Account with CPF",
+            "schema": {
+              "$ref": "#/definitions/id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+          "description": "OK",
+          "schema": {
+              "$ref": "#/definitions/Account"
+            }
+          },
+          "404": {
+            "description": "Failed. Account not found."
+          }
+        }
+      }
+    }
+  },
+  
+  "definitions": {
+    "id": {
+      "properties": {
+        "uuid": {
+          "type": "string"
+        }
+      }
+    },
+    "Account": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "cpf": {
+          "type": "string"
+        },
+        "birthDate": {
+          "type": "string"
+        }
+      }
+    },
+    "Accounts": {
+      "type": "object",
+      "properties": {
+        "account": {
+          "type": "object",
+          "additionalProperties": {
+              "$ref": "#/definitions/Account"
+          }
+        }
+      }
+    }
+  }
+}

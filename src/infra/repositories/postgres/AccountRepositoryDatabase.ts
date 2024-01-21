@@ -28,8 +28,8 @@ export class AccountRepositoryDatabase implements AccountRepository {
 
   async list(params?: Pagination): Promise<Account[]> {
     const accountData = await this.orm.prisma.account.findMany({
-      skip: (params.page - 1) * params.perPage,
-      take: params.page * params.perPage,
+      skip: params.page - 1,
+      take: params.perPage,
       orderBy: { created_at: 'desc' },
     })
     const accounts: Account[] = []
