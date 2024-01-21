@@ -19,6 +19,7 @@ module.exports = {
     'no-undef': 'off',
     'no-new': 'off',
     'no-useless-constructor': 'off',
+    'no-use-before-define': 'off',
     '@typescript-eslint/consistent-type-imports': 'error',
     'import-helpers/order-imports': [
       'error',
