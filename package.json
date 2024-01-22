@@ -1,15 +1,17 @@
 {
-  "name": "igma",
+  "name": "igma-client-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "Igma - Backend Technical Test",
   "main": "index.js",
+  "author": "Felipe Bambirra",
+  "license": "MIT",
   "scripts": {
+    "start": "node ./build/main.js",
     "start:dev": "tsx watch ./src/main.ts",
     "lint": "npx eslint src --ext .ts --fix",
+    "test": "jest",
     "build": "tsup src --out-dir build"
   },
-  "author": "Felipe Bambirra",
-  "license": "ISC",
   "dependencies": {
     "@prisma/client": "^5.8.1",
     "dotenv": "^16.3.2",

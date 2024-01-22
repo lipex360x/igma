@@ -7,15 +7,15 @@
 
 - [Desafio Técnico](#zap-desafio-técnico)
 
-- [Pré Requisitos de Execução (Servidor)](#zap-startup)
+- [Pré Requisitos de Execução (Servidor)](#zap-pré-requisitos-de-execução-servidor)
 
 - [Iniciando a API](#zap-iniciando-a-api)
 
 - [Endpoints](#zap-endpoints)
 
-- [Tecnologias Utilizadas](#zap-tecnologias-utilizadas)
+- [Execução dos Tests](#zap-execução-dos-tests)
 
-- [Live Preview](https://glass-blue-login.netlify.app/)
+- [Tecnologias Utilizadas](#zap-tecnologias-utilizadas)
 
 ---
 
@@ -62,6 +62,8 @@ Escrever uma API de cadastro de clientes
 
 * Docker
 
+* Docker Compose
+
 ---
 
 #### :zap: Iniciando a API
@@ -76,12 +78,18 @@ Escrever uma API de cadastro de clientes
   * POSTGRES_USER
   * POSTGRES_PASSWORD
   * DATABASE_URL
+  
+* Execute o comando `docker-compose up -d` para que o banco de dados seja executado
+* Execute o comando `npx prisma migrate deploy`
+* Execute o comando `npm run build` para gerar o build da aplicação
+* Execute o comando `npm start` para iniciar a API
 
 ---
 
 #### :zap: Endpoints
 
 ###### cadastrar cliente
+
 ```md
 [POST] /accounts
 ```
@@ -94,15 +102,11 @@ Escrever uma API de cadastro de clientes
   birthDate: Date
 ```
 
-
-
 ###### exibir cliente
 
 ```md
 [GET] /accounts/:cpf
 ```
-
-
 
 ###### listar clientes
 
@@ -119,6 +123,16 @@ Escrever uma API de cadastro de clientes
 
 ---
 
+#### :zap: Execução dos Tests
+
+* Execute o comando `npm test` para executar os tests da aplicação
+
+* Acesse o endereço `http://localhost:3001/api-docs` para visualizar a documentação da API no Swagger
+
+* Caso tenha a extenção REST Client (`humao.rest-client`) instalada no VSCode, será possível testar as rotas executando as requisições no arquivo **client.http**
+
+---
+
 #### :zap: Tecnologias Utilizadas
 
 ```
@@ -128,3 +142,7 @@ Escrever uma API de cadastro de clientes
   Prisma ORM
   Swagger
 ```
+
+---
+
+:point_up_2: [Voltar para o Índice](#bookmark_tabs-índice)

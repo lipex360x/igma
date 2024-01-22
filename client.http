@@ -21,10 +21,9 @@ GET {{baseUrl}}/accounts/41553189035
 # @name list_acounts
 GET {{baseUrl}}/accounts
 
-
 ###
 
 # @name list_acounts_paginated
-GET {{baseUrl}}/accounts?page=1&perPage=3
+GET {{baseUrl}}/accounts?page=1&perPage=2
 
 
